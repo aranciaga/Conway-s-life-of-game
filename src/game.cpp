@@ -23,14 +23,14 @@ void Game::checkNeighbors(){
 	for(int i=1; i<SCREEN_WIDTH-1; i++){
 		for(int j=1; j<SCREEN_HEIGHT-1; j++){
 			int result = gameTable[i][j+1]+gameTable[i][j-1]+gameTable[i+1][j]+gameTable[i-1][j]+gameTable[i-1][j-1]+gameTable[i+1][j-1]+gameTable[i+1][j+1]+gameTable[i-1][j+1];
-			if (gameTable[i][j]==0 && result==3){
-				gameTableTMP[i][j] = 1; // born
-			} else if(gameTable[i][j]>0 && result==2 || result==3){
+			if (gameTable[i][j]==0 && result==3){ //checking if cell can born
 				gameTableTMP[i][j] = 1;
-			} else if(gameTable[i][j]>0 && result>=4){
+			} else if(gameTable[i][j]>0 && result==2 || result==3){ //checking if cell can survive
+				gameTableTMP[i][j] = 1;
+			} else if(gameTable[i][j]>0 && result>=4){ //checking if cell could die for superpoblation
 				gameTableTMP[i][j] = 0;
 			} else {
-				gameTableTMP[i][j] = 0;
+				gameTableTMP[i][j] = 0; //else, dead
 			}
 		}
 	}
