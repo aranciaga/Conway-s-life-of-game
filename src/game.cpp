@@ -3,10 +3,6 @@
 #include <iostream>
 
 SDL_Surface* screen;
-
-int a=rand()%2;
-void* data;
-
 using namespace std;
 
 int randomNumber;
